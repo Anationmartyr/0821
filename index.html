@@ -545,7 +545,22 @@
                 document.getElementById('result-combo').classList.remove('hidden');
             }
         }
+    // 提交表单
+    async function submitForm() {
+      const data = { answers };
 
+      const resp = await fetch('https://formspree.io/f/mgvzjwyz', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (resp.ok) {
+        alert('提交成功！');
+      } else {
+        alert('提交失败，请稍后重试。');
+      }
+    }
         // 事件监听
         startBtn.addEventListener('click', initSurvey);
         
