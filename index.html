@@ -585,6 +585,13 @@
             }
             
             if (currentPage < questions.length - 1) {
+                                // 获取当前页的答案
+      const pageQuestions = questions[currentPage];
+      pageQuestions.forEach((question, index) => {
+        const selectedOption = document.querySelector(`input[name="question${currentPage}_${index}"]:checked`);
+        if (selectedOption) {
+          answers[`question${currentPage}_${index}`] = selectedOption.value;
+            }}
                 currentPage++;
                 renderQuestions(currentPage);
                 updateProgress();
